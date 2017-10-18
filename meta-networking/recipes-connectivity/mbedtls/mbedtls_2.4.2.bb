@@ -25,13 +25,13 @@ SECTION = "libdevel"
 
 SRC_URI = "https://tls.mbed.org/download/mbedtls-${PV}-gpl.tgz"
 
-SRC_URI[md5sum] = "19ebbc96feceb430ad958dfe89cb633f"
-SRC_URI[sha256sum] = "746fd88e0c6623691fc56c4eed52e40a57b2da0ac80f6dd8995094aa6adb407e"
+SRC_URI[md5sum] = "31dc8692fd2a4ada0af6a74b7b06c507"
+SRC_URI[sha256sum] = "d01f2d5586a52055329d194d909103f445bd2d0b6b2b5f1c830fbf828ac6299f"
 
-DEPENDS = "openssl"
+DEPENDS = "openssl perl"
 RDEPENDS_${PN} += "libcrypto"
 PROVIDES += "polarssl"
 RPROVIDES_${PN} = "polarssl"
-EXTRA_OECMAKE = "-DUSE_SHARED_POLARSSL_LIBRARY=on -DLIB_INSTALL_DIR=${baselib}"
+EXTRA_OECMAKE = "-DENABLE_TESTING=Off -DUSE_SHARED_MBEDTLS_LIBRARY=On -DUSE_SHARED_POLARSSL_LIBRARY=on -DLIB_INSTALL_DIR=${baselib}"
 
 inherit cmake
